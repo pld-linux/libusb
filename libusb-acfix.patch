@@ -1,0 +1,20 @@
+--- libusb-0.1.7/configure.in.orig	Sun Nov 17 19:45:15 2002
++++ libusb-0.1.7/configure.in	Tue Jan  7 23:45:06 2003
+@@ -11,7 +11,7 @@
+ 
+ dnl we need to AC_DIVERT_PUSH/AC_DIVERT_POP these variable definitions so they
+ dnl are available for $ac_help expansion (don't we all *love* autoconf?)
+-AC_DIVERT_PUSH(AC_DIVERSION_NOTICE)dnl
++AC_DIVERT_PUSH(NOTICE)dnl
+ 
+ #
+ # The following version number definitions apply to libusb
+@@ -111,7 +111,7 @@
+ 
+ dnl figure debugging default, prior to $ac_help setup
+ dnl
+-AC_DIVERT_PUSH(AC_DIVERSION_NOTICE)dnl
++AC_DIVERT_PUSH(NOTICE)dnl
+ if test `expr $LIBUSB_MINOR_VERSION \% 2` = 1 ; then
+   debug_default=yes
+ else

@@ -1,15 +1,15 @@
 Summary:	Application access to USB devices
+Summary(es):	libusb - Biblioteca USB
 Summary(pl):	Dostêp z poziomu aplikacji do urz±dzeñ USB
 Summary(pt_BR):	libusb - Biblioteca para acesso a devices USB
-Summary(es):	libusb - Biblioteca USB
 Name:		libusb
-Version:	0.1.6a
+Version:	0.1.7
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://download.sourceforge.net/libusb/%{name}-%{version}.tar.gz
 URL:		http://libusb.sourceforge.net/
-Patch0:		%{name}-am15.patch
+Patch0:		%{name}-acfix.patch
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -19,20 +19,20 @@ Obsoletes:	libusb0.1
 %description
 Provides a library for application access to USB devices.
 
+%description -l es
+Biblioteca de uso en devices USB.
+
 %description -l pl
 Biblioteka umo¿liwiaj±ca dostêp do urz±dzeñ USB z poziomu aplikacji.
 
 %description -l pt_BR
 Biblioteca para acesso em devices USB.
 
-%description -l es
-Biblioteca de uso en devices USB.
-
 %package devel
 Summary:	%{name} library headers
+Summary(es):	Archivos de desarrollo de libusb
 Summary(pl):	Pliki nag³ówkowe biblioteki %{name}
 Summary(pt_BR):	Arquivos de desenvolvimento da libusb
-Summary(es):	Archivos de desarrollo de libusb
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Obsoletes:	libusb0.1-devel
@@ -41,6 +41,9 @@ Obsoletes:	libusb0.1-devel
 This package contains include files and other resources you can use to
 incorporate %{name} into applications.
 
+%description devel -l es
+Bibliotecas de desarrolo para linusb.
+
 %description devel -l pl
 Pliki nag³ówkowe oraz dokumentacja pozwalaj±ca na dodawanie obs³ugi
 USB w swoich programach.
@@ -48,19 +51,19 @@ USB w swoich programach.
 %description devel -l pt_BR
 Bibliotecas de desenvolvimento para libusb.
 
-%description devel -l es
-Bibliotecas de desarrolo para linusb.
-
 %package static
 Summary:	libusb static libraries
+Summary(es):	Archivos de desarrollo de libusb - estatico
 Summary(pl):	Statyczne biblioteki do obs³ugi USB
 Summary(pt_BR):	Arquivos de desenvolvimento da libusb - biblioteca estática
-Summary(es):	Archivos de desarrollo de libusb - estatico
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
 %description static
 This is package with static libusb libraries.
+
+%description static -l es
+Bibliotecas de desarrolo para linusb - estatico.
 
 %description static -l pl
 Statyczne biblioteki libusb.
@@ -68,12 +71,9 @@ Statyczne biblioteki libusb.
 %description static -l pt_BR
 Bibliotecas de desenvolvimento para libusb - estático.
 
-%description static -l es
-Bibliotecas de desarrolo para linusb - estatico.
-
 %prep
-%setup  -q
-#%patch0 -p1
+%setup -q
+%patch0 -p1
 
 %build
 rm -f missing
