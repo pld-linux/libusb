@@ -2,7 +2,7 @@ Summary:	Application access to USB devices
 Summary(pl):	Dostêp z poziomu aplikacji do urz±dzeñ USB
 Name:		libusb
 Version:	0.1.3b
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
@@ -46,7 +46,7 @@ Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
-Requires:	%{name} = %{version}
+Requires:	%{name}-devel = %{version}
 
 %description static
 This is package with static libusb libraries.
