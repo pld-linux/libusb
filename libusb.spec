@@ -3,14 +3,13 @@ Summary(es):	libusb - Biblioteca USB
 Summary(pl):	Dostêp z poziomu aplikacji do urz±dzeñ USB
 Summary(pt_BR):	libusb - Biblioteca para acesso a devices USB
 Name:		libusb
-Version:	0.1.7
+Version:	0.1.8
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libusb/%{name}-%{version}.tar.gz
-# Source0-md5: 4c7abee86d8715bccb43428a500d2170
+# Source0-md5:	75655870fb7bb661e6fbd57cbfe81bb2
 URL:		http://libusb.sourceforge.net/
-Patch0:		%{name}-acfix.patch
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -74,7 +73,6 @@ Bibliotecas de desenvolvimento para libusb - estático.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 rm -f missing
@@ -83,7 +81,6 @@ rm -f missing
 %{__autoconf}
 %{__automake}
 %configure
-
 %{__make}
 
 %install
