@@ -3,22 +3,21 @@ Summary(es):	libusb - Biblioteca USB
 Summary(pl):	Dostêp z poziomu aplikacji do urz±dzeñ USB
 Summary(pt_BR):	libusb - Biblioteca para acesso a devices USB
 Name:		libusb
-Version:	0.1.9
+Version:	0.1.10
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libusb/%{name}-%{version}.tar.gz
-# Source0-md5:	d4a76c8951c509724ed4f28d6f76c0e3
-Patch0:		%{name}-link.patch
+# Source0-md5:	439a25e119d60d3847bd07673c883737
 URL:		http://libusb.sourceforge.net/
-BuildRequires:	autoconf >= 2.13
-BuildRequires:	automake >= 1.4
-BuildRequires:	docbook-dtd31-sgml
+BuildRequires:	autoconf >= 2.59
+BuildRequires:	automake >= 1.7.6
+BuildRequires:	docbook-dtd41-sgml
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	doxygen
+BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	openjade
-BuildRequires:	qt-devel
 Obsoletes:	libusb0.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -95,7 +94,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki libusbpp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	libusbpp = %{version}-%{release}
-Requires:	qt-devel
+Requires:	libstdc++-devel
 
 %description -n libusbpp-devel
 Header files for libusbpp library.
@@ -117,7 +116,9 @@ Statyczna biblioteka libusbpp.
 
 %prep
 %setup -q
-%patch0 -p1
+
+# docbook 4.1 is sufficient (for 4.2 we have only DocBook XML packaged)
+%{__perl} -pi -e 's/DocBook V4\.2/DocBook V4.1/' doc/manual.sgml
 
 %build
 %{__libtoolize}
