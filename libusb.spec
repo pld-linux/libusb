@@ -1,9 +1,11 @@
 Summary:	Application access to USB devices
 Summary(pl):	Dostêp z poziomu aplikacji do urz±dzeñ USB
+Summary(pt_BR):	libusb - Biblioteca para acesso a devices USB
+Summary(es):	libusb - Biblioteca USB
 Name:		libusb
 Version:	0.1.3b
 Release:	3
-License:	GPL
+License:	LGPL
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
@@ -25,9 +27,17 @@ Provides a library for application access to USB devices.
 %description -l pl
 Biblioteka umo¿liwiaj±ca dostêp do urz±dzeñ USB z poziomu aplikacji.
 
+%description -l pt_BR
+Biblioteca para acesso em devices USB
+
+%description -l es
+Biblioteca de uso en devices USB
+
 %package devel
 Summary:	%{name} library headers
 Summary(pl):	Pliki nag³ówkowe biblioteki %{name}
+Summary(pt_BR):	Arquivos de desenvolvimento da libusb
+Summary(es):	Archivos de desarrollo de libusb
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
 Group(es):	Desarrollo/Bibliotecas
@@ -46,9 +56,17 @@ incorporate %{name} into applications.
 Pliki nag³ówkowe oraz dokumentacja pozwalaj±ca na dodawanie obs³ugi
 USB w swoich programach.
 
+%description devel -l pt_BR
+Bibliotecas de desenvolvimento para libusb
+
+%description devel -l es
+Bibliotecas de desarrolo para linusb
+
 %package static
 Summary:	libusb static libraries
 Summary(pl):	Statyczne biblioteki do obs³ugi USB
+Summary(pt_BR):	Arquivos de desenvolvimento da libusb - biblioteca estática
+Summary(es):	Archivos de desarrollo de libusb - estatico
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
 Group(es):	Desarrollo/Bibliotecas
@@ -64,6 +82,12 @@ This is package with static libusb libraries.
 
 %description static -l pl
 Statyczne biblioteki libusb.
+
+%description static -l pt_BR
+Bibliotecas de desenvolvimento para libusb - estático
+
+%description static -l es
+Bibliotecas de desarrolo para linusb - estatico
 
 %prep
 %setup  -q
