@@ -1,7 +1,7 @@
 Summary:	Application access to USB devices
 Summary(pl):	Dostêp z poziomu aplikacji do urz±dzeñ USB
 Name:		libusb
-Version:	0.1.0
+Version:	0.1.3b
 Release:	1
 License:	GPL
 Group:		Libraries
@@ -9,8 +9,7 @@ Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source0:	ftp://download.sourceforge.net/pub/sourceforge/%{name}/%{name}-%{version}.tar.gz
-Patch0:		%{name}-comment.patch
+Source0:	http://prdownloads.sourceforge.net/libusb/%{name}-%{version}.tar.gz
 URL:		http://libusb.sourceforge.net/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
@@ -57,7 +56,6 @@ Statyczne biblioteki libusb.
 
 %prep
 %setup  -q
-%patch0 -p1
 
 %build
 rm missing
@@ -86,7 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc *.gz
-%attr(755,root,root) %{_libdir}/lib*.so.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
