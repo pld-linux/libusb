@@ -8,6 +8,7 @@ Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://download.sourceforge.net/libusb/%{name}-%{version}.tar.gz
+# Source0-md5: 4c7abee86d8715bccb43428a500d2170
 URL:		http://libusb.sourceforge.net/
 Patch0:		%{name}-acfix.patch
 BuildRequires:	autoconf >= 2.52
