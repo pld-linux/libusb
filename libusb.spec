@@ -4,7 +4,7 @@ Summary(pt_BR):	libusb - Biblioteca para acesso a devices USB
 Summary(es):	libusb - Biblioteca USB
 Name:		libusb
 Version:	0.1.3b
-Release:	3
+Release:	4
 License:	LGPL
 Group:		Libraries
 Group(de):	Libraries
