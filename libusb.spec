@@ -107,7 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc doc/html/*
 %attr(755,root,root) %{_bindir}/libusb-config
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
+%{_libdir}/lib*.la
 %{_includedir}/*.h
 
 %files static
