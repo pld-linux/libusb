@@ -3,15 +3,15 @@ Summary(es):	libusb - Biblioteca USB
 Summary(pl):	Dostêp z poziomu aplikacji do urz±dzeñ USB
 Summary(pt_BR):	libusb - Biblioteca para acesso a devices USB
 Name:		libusb
-Version:	0.1.10
+Version:	0.1.10a
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libusb/%{name}-%{version}.tar.gz
-# Source0-md5:	439a25e119d60d3847bd07673c883737
+# Source0-md5:	c6062b29acd2cef414bcc34e0decbdd1
 URL:		http://libusb.sourceforge.net/
 BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1.7.6
+BuildRequires:	automake >= 1:1.7.6
 BuildRequires:	docbook-dtd41-sgml
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	doxygen
@@ -136,9 +136,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-# missing in include_HEADERS (0.1.9)
-install usbpp.h $RPM_BUILD_ROOT%{_includedir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
