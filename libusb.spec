@@ -2,13 +2,16 @@ Summary:	Application access to USB devices
 Summary(pl):	DostЙp z poziomu aplikacji do urz╠dzeЯ USB
 Name:		libusb
 Version:	0.1.3b
-Release:	2
+Release:	3
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	Библиотеки
+Group(uk):	Б╕бл╕отеки
 Source0:	http://prdownloads.sourceforge.net/libusb/%{name}-%{version}.tar.gz
 URL:		http://libusb.sourceforge.net/
 BuildRequires:	autoconf >= 2.52
@@ -27,15 +30,19 @@ Summary:	%{name} library headers
 Summary(pl):	Pliki nagЁСwkowe biblioteki %{name}
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
-This is the libraries, include files and other resources you can use
-to incorporate %{name} into applications.
+This package contains include files and other resources you can use to
+incorporate %{name} into applications.
 
-%description -l pl devel
+%description devel -l pl
 Pliki nagЁСwkowe oraz dokumentacja pozwalaj╠ca na dodawanie obsЁugi
 USB w swoich programach.
 
@@ -44,21 +51,25 @@ Summary:	libusb static libraries
 Summary(pl):	Statyczne biblioteki do obsЁugi USB
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
 This is package with static libusb libraries.
 
-%description -l pl static
+%description static -l pl
 Statyczne biblioteki libusb.
 
 %prep
 %setup  -q
 
 %build
-rm missing
+rm -f missing
 libtoolize --copy --force
 aclocal
 autoupdate
@@ -75,11 +86,11 @@ rm -rf $RPM_BUILD_ROOT
 
 gzip -9nf README AUTHORS
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
