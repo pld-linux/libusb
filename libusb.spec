@@ -9,7 +9,7 @@ Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source0:	ftp://ftp.libusb.sourceforge.net/pub/%{name}/%{name}-%{version}.tar.gz
+Source0:	ftp://download.sourceforge.net/pub/sourceforge/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-comment.patch
 URL:		http://libusb.sourceforge.net/
 BuildRequires:	autoconf >= 2.52
