@@ -10,9 +10,12 @@ Group:		Libraries
 Source0:	http://dl.sourceforge.net/libusb/%{name}-%{version}.tar.gz
 # Source0-md5:	75655870fb7bb661e6fbd57cbfe81bb2
 URL:		http://libusb.sourceforge.net/
-BuildRequires:	autoconf >= 2.52
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.13
+BuildRequires:	automake >= 1.4
+BuildRequires:	docbook-dtd31-sgml
+BuildRequires:	docbook-style-dsssl
 BuildRequires:	libtool
+BuildRequires:	openjade
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libusb0.1
 
@@ -29,17 +32,17 @@ Biblioteka umo¿liwiaj±ca dostêp do urz±dzeñ USB z poziomu aplikacji.
 Biblioteca para acesso em devices USB.
 
 %package devel
-Summary:	%{name} library headers
+Summary:	Header files for libusb library
 Summary(es):	Archivos de desarrollo de libusb
-Summary(pl):	Pliki nag³ówkowe biblioteki %{name}
+Summary(pl):	Pliki nag³ówkowe biblioteki libusb
 Summary(pt_BR):	Arquivos de desenvolvimento da libusb
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Obsoletes:	libusb0.1-devel
 
 %description devel
-This package contains include files and other resources you can use to
-incorporate %{name} into applications.
+This package contains header files and other resources you can use to
+incorporate libusb into applications.
 
 %description devel -l es
 Bibliotecas de desarrolo para linusb.
@@ -57,7 +60,7 @@ Summary(es):	Archivos de desarrollo de libusb - estatico
 Summary(pl):	Statyczne biblioteki do obs³ugi USB
 Summary(pt_BR):	Arquivos de desenvolvimento da libusb - biblioteca estática
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 This is package with static libusb libraries.
@@ -75,7 +78,6 @@ Bibliotecas de desenvolvimento para libusb - estático.
 %setup -q
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
