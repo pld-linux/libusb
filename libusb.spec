@@ -127,7 +127,8 @@ Statyczna biblioteka libusbpp.
 %{__autoheader}
 %{__automake}
 %configure
-%{__make}
+%{__make} \
+	CFLAGS="%{rpmcflags} -fPIC"
 
 doxygen
 
