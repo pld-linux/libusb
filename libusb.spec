@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	doc	# don't build documentation
+#
 Summary:	Application access to USB devices
 Summary(es):	libusb - Biblioteca USB
 Summary(pl):	Dostêp z poziomu aplikacji do urz±dzeñ USB
@@ -14,7 +18,7 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.7.6
 BuildRequires:	docbook-dtd41-sgml
 BuildRequires:	docbook-style-dsssl
-BuildRequires:	doxygen
+%{?with_doc:BuildRequires:	doxygen}
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
 BuildRequires:	openjade
@@ -129,7 +133,7 @@ Statyczna biblioteka libusbpp.
 %configure
 %{__make}
 
-doxygen
+%{?with_doc:doxygen}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -153,7 +157,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/html/*
+%{?with_doc:%doc doc/html/*}
 %attr(755,root,root) %{_bindir}/libusb-config
 %attr(755,root,root) %{_libdir}/libusb.so
 %{_libdir}/libusb.la
@@ -169,7 +173,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n libusbpp-devel
 %defattr(644,root,root,755)
-%doc apidocs/html/*
+%{?with_doc:%doc apidocs/html/*}
 %attr(755,root,root) %{_libdir}/libusbpp.so
 %{_libdir}/libusbpp.la
 %{_includedir}/usbpp.h
