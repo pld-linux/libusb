@@ -8,11 +8,12 @@ Summary(pl):	Dostêp z poziomu aplikacji do urz±dzeñ USB
 Summary(pt_BR):	libusb - Biblioteca para acesso a devices USB
 Name:		libusb
 Version:	0.1.10a
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libusb/%{name}-%{version}.tar.gz
 # Source0-md5:	c6062b29acd2cef414bcc34e0decbdd1
+Patch0:		%{name}-urb.patch
 URL:		http://libusb.sourceforge.net/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.7.6
@@ -120,6 +121,7 @@ Statyczna biblioteka libusbpp.
 
 %prep
 %setup -q
+%patch0 -p1
 
 # docbook 4.1 is sufficient (for 4.2 we have only DocBook XML packaged)
 %{__perl} -pi -e 's/DocBook V4\.2/DocBook V4.1/' doc/manual.sgml
