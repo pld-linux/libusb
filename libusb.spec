@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	doc	# don't build documentation
+%bcond_with	tests	# perform "make check"
 #
 Summary:	Application access to USB devices
 Summary(es):	libusb - Biblioteca USB
@@ -8,7 +9,7 @@ Summary(pl):	Dostêp z poziomu aplikacji do urz±dzeñ USB
 Summary(pt_BR):	libusb - Biblioteca para acesso a devices USB
 Name:		libusb
 Version:	0.1.11
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libusb/%{name}-%{version}.tar.gz
@@ -134,7 +135,7 @@ Statyczna biblioteka libusbpp.
 %{__automake}
 %configure
 %{__make}
-%{__make} check
+%{?with_tests:%{__make} check}
 
 %{?with_doc:doxygen}
 
