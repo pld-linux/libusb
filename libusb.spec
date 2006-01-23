@@ -166,6 +166,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libusb.so
 %{_libdir}/libusb.la
 %{_includedir}/usb.h
+%{_pkgconfigdir}/libusb.pc
 
 %files static
 %defattr(644,root,root,755)
