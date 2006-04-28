@@ -17,12 +17,14 @@ Source0:	http://dl.sourceforge.net/libusb/%{name}-%{version}.tar.gz
 URL:		http://libusb.sourceforge.net/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.7.6
+%if %{with doc}
 BuildRequires:	docbook-dtd41-sgml
 BuildRequires:	docbook-style-dsssl
-%{?with_doc:BuildRequires:	doxygen}
+BuildRequires:	doxygen
+BuildRequires:	openjade
+%endif
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
-BuildRequires:	openjade
 Obsoletes:	libusb0.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
