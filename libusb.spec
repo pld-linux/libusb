@@ -1,28 +1,30 @@
 #
 # Conditional build:
 %bcond_without	doc	# don't build documentation
+%bcond_with	tests	# perform "make check"
 #
 Summary:	Application access to USB devices
 Summary(es):	libusb - Biblioteca USB
 Summary(pl):	Dostêp z poziomu aplikacji do urz±dzeñ USB
 Summary(pt_BR):	libusb - Biblioteca para acesso a devices USB
 Name:		libusb
-Version:	0.1.10a
-Release:	2
+Version:	0.1.12
+Release:	3
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libusb/%{name}-%{version}.tar.gz
-# Source0-md5:	c6062b29acd2cef414bcc34e0decbdd1
-Patch0:		%{name}-urb.patch
+# Source0-md5:	caf182cbc7565dac0fd72155919672e6
 URL:		http://libusb.sourceforge.net/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.7.6
+%if %{with doc}
 BuildRequires:	docbook-dtd41-sgml
 BuildRequires:	docbook-style-dsssl
-%{?with_doc:BuildRequires:	doxygen}
+BuildRequires:	doxygen
+BuildRequires:	openjade
+%endif
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
-BuildRequires:	openjade
 Obsoletes:	libusb0.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -121,7 +123,6 @@ Statyczna biblioteka libusbpp.
 
 %prep
 %setup -q
-%patch0 -p1
 
 # docbook 4.1 is sufficient (for 4.2 we have only DocBook XML packaged)
 %{__perl} -pi -e 's/DocBook V4\.2/DocBook V4.1/' doc/manual.sgml
@@ -134,6 +135,7 @@ Statyczna biblioteka libusbpp.
 %{__automake}
 %configure
 %{__make}
+%{?with_tests:%{__make} check}
 
 %{?with_doc:doxygen}
 
@@ -164,6 +166,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libusb.so
 %{_libdir}/libusb.la
 %{_includedir}/usb.h
+%{_pkgconfigdir}/libusb.pc
 
 %files static
 %defattr(644,root,root,755)
