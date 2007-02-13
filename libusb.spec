@@ -4,9 +4,9 @@
 %bcond_with	tests	# perform "make check"
 #
 Summary:	Application access to USB devices
-Summary(es.UTF-8):   libusb - Biblioteca USB
-Summary(pl.UTF-8):   Dostęp z poziomu aplikacji do urządzeń USB
-Summary(pt_BR.UTF-8):   libusb - Biblioteca para acesso a devices USB
+Summary(es.UTF-8):	libusb - Biblioteca USB
+Summary(pl.UTF-8):	Dostęp z poziomu aplikacji do urządzeń USB
+Summary(pt_BR.UTF-8):	libusb - Biblioteca para acesso a devices USB
 Name:		libusb
 Version:	0.1.12
 Release:	3
@@ -42,9 +42,9 @@ Biblioteca para acesso em devices USB.
 
 %package devel
 Summary:	Header files for libusb library
-Summary(es.UTF-8):   Archivos de desarrollo de libusb
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libusb
-Summary(pt_BR.UTF-8):   Arquivos de desenvolvimento da libusb
+Summary(es.UTF-8):	Archivos de desarrollo de libusb
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libusb
+Summary(pt_BR.UTF-8):	Arquivos de desenvolvimento da libusb
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	libusb0.1-devel
@@ -65,9 +65,9 @@ Bibliotecas de desenvolvimento para libusb.
 
 %package static
 Summary:	libusb static libraries
-Summary(es.UTF-8):   Archivos de desarrollo de libusb - estatico
-Summary(pl.UTF-8):   Statyczne biblioteki do obsługi USB
-Summary(pt_BR.UTF-8):   Arquivos de desenvolvimento da libusb - biblioteca estática
+Summary(es.UTF-8):	Archivos de desarrollo de libusb - estatico
+Summary(pl.UTF-8):	Statyczne biblioteki do obsługi USB
+Summary(pt_BR.UTF-8):	Arquivos de desenvolvimento da libusb - biblioteca estática
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -85,7 +85,7 @@ Bibliotecas de desenvolvimento para libusb - estático.
 
 %package -n libusbpp
 Summary:	C++ bindings for libusb
-Summary(pl.UTF-8):   Wiązania C++ dla libusb
+Summary(pl.UTF-8):	Wiązania C++ dla libusb
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -97,7 +97,7 @@ Wiązania C++ dla libusb oparte na Qt.
 
 %package -n libusbpp-devel
 Summary:	Header files for libusbpp library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libusbpp
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libusbpp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	libusbpp = %{version}-%{release}
@@ -111,7 +111,7 @@ Pliki nagłówkowe biblioteki libusbpp.
 
 %package -n libusbpp-static
 Summary:	Static libusbpp library
-Summary(pl.UTF-8):   Statyczna biblioteka libusbpp
+Summary(pl.UTF-8):	Statyczna biblioteka libusbpp
 Group:		Development/Libraries
 Requires:	libusbpp-devel = %{version}-%{release}
 
