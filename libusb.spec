@@ -8,13 +8,12 @@ Summary(es.UTF-8):	libusb - Biblioteca USB
 Summary(pl.UTF-8):	Dostęp z poziomu aplikacji do urządzeń USB
 Summary(pt_BR.UTF-8):	libusb - Biblioteca para acesso a devices USB
 Name:		libusb
-Version:	0.1.12
-Release:	5
+Version:	1.0.0
+Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/libusb/%{name}-%{version}.tar.gz
-# Source0-md5:	caf182cbc7565dac0fd72155919672e6
-Patch0:		%{name}-configure.in.patch
+Source0:	http://dl.sourceforge.net/libusb/%{name}-%{version}.tar.bz2
+# Source0-md5:	df2447c23750ef2b4a314200feacc2ee
 URL:		http://libusb.sourceforge.net/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.7.6
@@ -24,7 +23,6 @@ BuildRequires:	docbook-style-dsssl
 BuildRequires:	doxygen
 BuildRequires:	openjade
 %endif
-BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.5
 Obsoletes:	libusb0.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -84,50 +82,8 @@ Statyczne biblioteki libusb.
 %description static -l pt_BR.UTF-8
 Bibliotecas de desenvolvimento para libusb - estático.
 
-%package -n libusbpp
-Summary:	C++ bindings for libusb
-Summary(pl.UTF-8):	Wiązania C++ dla libusb
-Group:		Libraries
-Requires:	%{name} = %{version}-%{release}
-
-%description -n libusbpp
-C++ bindings for libusb based on Qt.
-
-%description -n libusbpp -l pl.UTF-8
-Wiązania C++ dla libusb oparte na Qt.
-
-%package -n libusbpp-devel
-Summary:	Header files for libusbpp library
-Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libusbpp
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-Requires:	libusbpp = %{version}-%{release}
-Requires:	libstdc++-devel
-
-%description -n libusbpp-devel
-Header files for libusbpp library.
-
-%description -n libusbpp-devel -l pl.UTF-8
-Pliki nagłówkowe biblioteki libusbpp.
-
-%package -n libusbpp-static
-Summary:	Static libusbpp library
-Summary(pl.UTF-8):	Statyczna biblioteka libusbpp
-Group:		Development/Libraries
-Requires:	libusbpp-devel = %{version}-%{release}
-
-%description -n libusbpp-static
-Static libusbpp library.
-
-%description -n libusbpp-static -l pl.UTF-8
-Statyczna biblioteka libusbpp.
-
 %prep
 %setup -q
-%patch0 -p1
-
-# docbook 4.1 is sufficient (for 4.2 we have only DocBook XML packaged)
-%{__perl} -pi -e 's/DocBook V4\.2/DocBook V4.1/' doc/manual.sgml
 
 %build
 %{__libtoolize}
@@ -136,10 +92,11 @@ Statyczna biblioteka libusbpp.
 %{__autoheader}
 %{__automake}
 %configure
-%{__make}
-%{?with_tests:%{__make} check}
 
-%{?with_doc:doxygen}
+%{__make}
+%{__make} -C doc docs
+
+%{?with_tests:%{__make} check}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -153,38 +110,19 @@ rm -rf $RPM_BUILD_ROOT
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%post   -n libusbpp -p /sbin/ldconfig
-%postun -n libusbpp -p /sbin/ldconfig
-
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS LICENSE README
+%doc AUTHORS README NEWS ChangeLog THANKS TODO
 %attr(755,root,root) %{_libdir}/libusb-*.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %{?with_doc:%doc doc/html/*}
-%attr(755,root,root) %{_bindir}/libusb-config
-%attr(755,root,root) %{_libdir}/libusb.so
-%{_libdir}/libusb.la
-%{_includedir}/usb.h
-%{_pkgconfigdir}/libusb.pc
+%attr(755,root,root) %{_libdir}/libusb-*.so
+%{_libdir}/libusb-*.la
+%{_includedir}/libusb-*
+%{_pkgconfigdir}/libusb-*.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libusb.a
-
-%files -n libusbpp
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libusbpp-*.so.*.*.*
-
-%files -n libusbpp-devel
-%defattr(644,root,root,755)
-%{?with_doc:%doc apidocs/html/*}
-%attr(755,root,root) %{_libdir}/libusbpp.so
-%{_libdir}/libusbpp.la
-%{_includedir}/usbpp.h
-
-%files -n libusbpp-static
-%defattr(644,root,root,755)
-%{_libdir}/libusbpp.a
+%{_libdir}/libusb-*.a
