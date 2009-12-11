@@ -12,7 +12,7 @@ Version:	1.0.6
 Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/libusb/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.sourceforge.net/libusb/%{name}-%{version}.tar.bz2
 # Source0-md5:	818c7c02112a53e0c182666ee83f2057
 URL:		http://libusb.sourceforge.net/
 BuildRequires:	autoconf >= 2.59
