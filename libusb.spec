@@ -113,17 +113,17 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS README NEWS ChangeLog THANKS TODO
-%attr(755,root,root) %{_libdir}/libusb-*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libusb-1.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libusb-1.0.so.0
 
 %files devel
 %defattr(644,root,root,755)
 %{?with_doc:%doc doc/html/*}
-%attr(755,root,root) %{_libdir}/libusb-*.so
-%{_libdir}/libusb-*.la
-%{_includedir}/libusb-*
-%{_pkgconfigdir}/libusb-*.pc
+%attr(755,root,root) %{_libdir}/libusb-1.0.so
+%{_libdir}/libusb-1.0.la
+%{_includedir}/libusb-1.0
+%{_pkgconfigdir}/libusb-1.0.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libusb-*.a
+%{_libdir}/libusb-1.0.a
