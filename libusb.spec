@@ -2,19 +2,20 @@
 # Conditional build:
 %bcond_without	doc	# don't build documentation
 %bcond_with	tests	# perform "make check"
-#
+
 Summary:	Application access to USB devices
 Summary(es.UTF-8):	libusb - Biblioteca USB
 Summary(pl.UTF-8):	Dostęp z poziomu aplikacji do urządzeń USB
 Summary(pt_BR.UTF-8):	libusb - Biblioteca para acesso a devices USB
 Name:		libusb
-Version:	1.0.8
-Release:	1
+Version:	1.0.9
+Release:	0.rc3.1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/libusb/%{name}-%{version}.tar.bz2
-# Source0-md5:	37d34e6eaa69a4b645a19ff4ca63ceef
-URL:		http://libusb.sourceforge.net/
+#Source0:	http://downloads.sourceforge.net/libusb/%{name}-%{version}.tar.bz2
+Source0:	http://git.libusb.org/?p=libusb.git;a=snapshot;h=f07a4a78533b44d124dfe06cbf42afa7fb267359;sf=tbz2;/libusb-1.0.9-rc3.tar.bz2
+# Source0-md5:	26abbce8ddb945899ee6e16fa92928f8
+URL:		http://www.libusb.org/wiki/libusb-1.0
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.6
 %if %{with doc}
@@ -83,7 +84,9 @@ Statyczne biblioteki libusb.
 Bibliotecas de desenvolvimento para libusb - estático.
 
 %prep
-%setup -q
+%setup -qc
+mv libusb-*/* .
+touch ChangeLog # for snapshot build
 
 %build
 %{__libtoolize}
