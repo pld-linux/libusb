@@ -98,7 +98,8 @@ touch ChangeLog # for snapshot build
 	--disable-silent-rules
 
 %{__make}
-%{__make} -C doc docs
+
+%{?with_doc:%{__make} -C doc docs}
 
 %{?with_tests:%{__make} check}
 
