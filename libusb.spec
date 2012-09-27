@@ -12,8 +12,7 @@ Version:	1.0.9
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-#Source0:	http://downloads.sourceforge.net/libusb/%{name}-%{version}.tar.bz2
-Source0:	http://dl.sourceforge.net/project/libusb/libusb-1.0/libusb-1.0.9/libusb-1.0.9.tar.bz2
+Source0:	http://downloads.sourceforge.net/libusb/%{name}-%{version}.tar.bz2
 # Source0-md5:	7f5a02375ad960d4e33a6dae7d63cfcb
 URL:		http://www.libusb.org/wiki/libusb-1.0
 BuildRequires:	autoconf >= 2.50
@@ -84,9 +83,7 @@ Statyczne biblioteki libusb.
 Bibliotecas de desenvolvimento para libusb - estático.
 
 %prep
-%setup -qc
-mv libusb-*/* .
-touch ChangeLog # for snapshot build
+%setup -q
 
 %build
 %{__libtoolize}
