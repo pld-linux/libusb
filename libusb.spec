@@ -8,13 +8,13 @@ Summary(es.UTF-8):	libusb - Biblioteca USB
 Summary(pl.UTF-8):	Dostęp z poziomu aplikacji do urządzeń USB
 Summary(pt_BR.UTF-8):	libusb - Biblioteca para acesso a devices USB
 Name:		libusb
-Version:	1.0.9
+Version:	1.0.18
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libusb/%{name}-%{version}.tar.bz2
-# Source0-md5:	7f5a02375ad960d4e33a6dae7d63cfcb
-URL:		http://www.libusb.org/wiki/libusb-1.0
+# Source0-md5:	4a6d049923efc6496f1d383054dac1a6
+URL:		http://libusb.info/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.6
 %if %{with doc}
@@ -114,7 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README THANKS TODO
+%doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_libdir}/libusb-1.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libusb-1.0.so.0
 
