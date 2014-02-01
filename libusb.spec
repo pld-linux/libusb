@@ -1,7 +1,9 @@
 #
 # Conditional build:
-%bcond_without	doc	# don't build documentation
-%bcond_with	tests	# perform "make check"
+%bcond_without	doc		# don't build documentation
+%bcond_with	tests		# perform "make check"
+%bcond_without	static_libs	# static library
+%bcond_without	udev		# udev for device enumeration and hotplug support
 
 Summary:	Application access to USB devices
 Summary(es.UTF-8):	libusb - Biblioteca USB
@@ -17,14 +19,17 @@ Source0:	http://downloads.sourceforge.net/libusb/%{name}-%{version}.tar.bz2
 URL:		http://libusb.info/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.6
+BuildRequires:	glibc-devel >= 6:2.9
+BuildRequires:	libtool >= 2:2
+%{?with_udev:BuildRequires:	udev-devel}
 %if %{with doc}
 BuildRequires:	docbook-dtd41-sgml
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	doxygen
 BuildRequires:	openjade
 %endif
-BuildRequires:	libtool >= 2:1.5
 Obsoletes:	libusb0.1
+Obsoletes:	libusbx < 1.0.18
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -46,7 +51,9 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libusb
 Summary(pt_BR.UTF-8):	Arquivos de desenvolvimento da libusb
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+%{?with_udev:Requires:	udev-devel}
 Obsoletes:	libusb0.1-devel
+Obsoletes:	libusbx-devel < 1.0.18
 
 %description devel
 This package contains header files and other resources you can use to
@@ -69,6 +76,7 @@ Summary(pl.UTF-8):	Statyczne biblioteki do obsługi USB
 Summary(pt_BR.UTF-8):	Arquivos de desenvolvimento da libusb - biblioteca estática
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Obsoletes:	libusbx-static < 1.0.18
 
 %description static
 This is package with static libusb libraries.
@@ -92,7 +100,9 @@ Bibliotecas de desenvolvimento para libusb - estático.
 %{__autoheader}
 %{__automake}
 %configure \
-	--disable-silent-rules
+	--disable-silent-rules \
+	%{!?with_static_libs:--disable-static} \
+	%{!?with_udev:--disable-udev}
 
 %{__make}
 
