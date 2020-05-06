@@ -137,6 +137,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libusb-1.0
 %{_pkgconfigdir}/libusb-1.0.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libusb-1.0.a
+%endif
