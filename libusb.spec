@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	doc		# don't build documentation
+%bcond_without	apidocs		# API documentation
 %bcond_with	tests		# perform "make check"
 %bcond_without	static_libs	# static library
 %bcond_without	udev		# udev for device enumeration and hotplug support
@@ -20,16 +20,12 @@ Source0:	https://github.com/libusb/libusb/releases/download/v%{version}/%{name}-
 URL:		https://libusb.info/
 BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1.6
+%{?with_apidocs:BuildRequires:	doxygen}
 BuildRequires:	gcc >= 6:4.9
 BuildRequires:	glibc-devel >= 6:2.9
 BuildRequires:	libtool >= 2:2
+BuildRequires:	rpmbuild(macros) >= 1.752
 %{?with_udev:BuildRequires:	udev-devel}
-%if %{with doc}
-BuildRequires:	docbook-dtd41-sgml
-BuildRequires:	docbook-style-dsssl
-BuildRequires:	doxygen
-BuildRequires:	openjade
-%endif
 Obsoletes:	libusb0.1
 Obsoletes:	libusbx < 1.0.18
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -92,6 +88,18 @@ Statyczne biblioteki libusb.
 %description static -l pt_BR.UTF-8
 Bibliotecas de desenvolvimento para libusb - estático.
 
+%package apidocs
+Summary:	API documentation for libusb library
+Summary(pl.UTF-8):	Dokumentacja API biblioteki libusb
+Group:		Documentation
+%{?noarchpackage}
+
+%description apidocs
+API documentation for libusb library.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki libusb.
+
 %prep
 %setup -q
 
@@ -108,7 +116,7 @@ Bibliotecas de desenvolvimento para libusb - estático.
 
 %{__make}
 
-%{?with_doc:%{__make} -C doc docs}
+%{?with_apidocs:%{__make} -C doc docs}
 
 %{?with_tests:%{__make} check}
 
@@ -132,7 +140,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{?with_doc:%doc doc/html/*}
 %attr(755,root,root) %{_libdir}/libusb-1.0.so
 %{_libdir}/libusb-1.0.la
 %{_includedir}/libusb-1.0
@@ -143,3 +150,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libusb-1.0.a
 %endif
+
+%files apidocs
+%defattr(644,root,root,755)
+%doc doc/api-1.0/*.{css,html,js,png}
