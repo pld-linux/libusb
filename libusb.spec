@@ -151,6 +151,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libusb-1.0.a
 %endif
 
+%if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
 %doc doc/api-1.0/*.{css,html,js,png}
+%endif
