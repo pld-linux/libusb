@@ -92,7 +92,7 @@ Bibliotecas de desenvolvimento para libusb - estático.
 Summary:	API documentation for libusb library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libusb
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description apidocs
 API documentation for libusb library.
