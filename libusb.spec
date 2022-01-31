@@ -24,6 +24,7 @@ BuildRequires:	automake >= 1.6
 BuildRequires:	gcc >= 6:4.9
 BuildRequires:	glibc-devel >= 6:2.9
 BuildRequires:	libtool >= 2:2
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.752
 %{?with_udev:BuildRequires:	udev-devel}
 Obsoletes:	libusb0.1
