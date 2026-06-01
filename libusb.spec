@@ -49,8 +49,8 @@ Summary(es.UTF-8):	Archivos de desarrollo de libusb
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libusb
 Summary(pt_BR.UTF-8):	Arquivos de desenvolvimento da libusb
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
-%{?with_udev:Requires:	udev-devel}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
+%{?with_udev:Requires:	udev-devel%{?_isa}}
 Obsoletes:	libusb0.1-devel
 Obsoletes:	libusbx-devel < 1.0.18
 
@@ -74,7 +74,7 @@ Summary(es.UTF-8):	Archivos de desarrollo de libusb - estatico
 Summary(pl.UTF-8):	Statyczne biblioteki do obsługi USB
 Summary(pt_BR.UTF-8):	Arquivos de desenvolvimento da libusb - biblioteca estática
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{version}-%{release}
 Obsoletes:	libusbx-static < 1.0.18
 
 %description static
